@@ -71,6 +71,9 @@
   --color-rose-pink-700: var(--rose-pink-700);
   --color-rose-pink-800: var(--rose-pink-800);
   --color-rose-pink-900: var(--rose-pink-900);
+
+  /* ドロップシャドウ */
+  --shadow-button: 0 2px 8px 2px var(--color-beige-orange-500);
 }
 
 @layer utilities {
