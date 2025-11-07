@@ -33,7 +33,7 @@ export function Input({
       <input
         type={type}
         placeholder={placeholder}
-        className="outline-none"
+        className="w-full h-full outline-none"
       />
     </div>
   )
