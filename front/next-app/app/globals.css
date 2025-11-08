@@ -1,26 +1,163 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --white: #FFFDFC;
+  --black: #252525;
+  
+  /* グレー */
+  --gray-100: #F7F7F7;
+  --gray-200: #DEDEDE;
+  --gray-300: #CAC8C8;
+  --gray-400: #B4B3B3;
+  --gray-500: #A0A0A0;
+  --gray-600: #8D8D8D;
+  --gray-700: #777676;
+  --gray-800: #606060;
+  --gray-900: #484848;
+
+  /* ベージュオレンジ */
+  --beige-orange-100: #F9EAE0;
+  --beige-orange-200: #F6E0D1;
+  --beige-orange-300: #EECEB8;
+  --beige-orange-400: #ECBB99;
+  --beige-orange-500: #E8A87C;
+  --beige-orange-600: #E6955E;
+  --beige-orange-700: #EA8743;
+  --beige-orange-800: #DF7329;
+  --beige-orange-900: #EB6A12;
+
+  /* ローズピンク */
+  --rose-pink-100: #F4E4E9;
+  --rose-pink-200: #ECD1DA;
+  --rose-pink-300: #E1B9C6;
+  --rose-pink-400: #D49EAF;
+  --rose-pink-500: #C38D9E;
+  --rose-pink-600: #C9869B;
+  --rose-pink-700: #CF7C96;
+  --rose-pink-800: #D6688B;
+  --rose-pink-900: #DA5B83;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* グレー */
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-700: var(--gray-700);
+  --color-gray-800: var(--gray-800);
+  --color-gray-900: var(--gray-900);
+
+  /* ベージュオレンジ */
+  --color-beige-orange-100: var(--beige-orange-100);
+  --color-beige-orange-200: var(--beige-orange-200);
+  --color-beige-orange-300: var(--beige-orange-300);
+  --color-beige-orange-400: var(--beige-orange-400);
+  --color-beige-orange-500: var(--beige-orange-500);
+  --color-beige-orange-600: var(--beige-orange-600);
+  --color-beige-orange-700: var(--beige-orange-700);
+  --color-beige-orange-800: var(--beige-orange-800);
+  --color-beige-orange-900: var(--beige-orange-900);
+
+  /* ローズピンク */
+  --color-rose-pink-100: var(--rose-pink-100);
+  --color-rose-pink-200: var(--rose-pink-200);
+  --color-rose-pink-300: var(--rose-pink-300);
+  --color-rose-pink-400: var(--rose-pink-400);
+  --color-rose-pink-500: var(--rose-pink-500);
+  --color-rose-pink-600: var(--rose-pink-600);
+  --color-rose-pink-700: var(--rose-pink-700);
+  --color-rose-pink-800: var(--rose-pink-800);
+  --color-rose-pink-900: var(--rose-pink-900);
+
+  /* ドロップシャドウ */
+  --shadow-button: 0 2px 8px 2px var(--color-beige-orange-400);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  .Heading32 {
+    font-family: "Noto Sans JP";
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 40px;
+    letter-spacing: 0;
+  }
+  .Heading24 {
+    font-family: "Noto Sans JP";
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 34px;
+    letter-spacing: 0;
+  }
+  .Heading20 {
+    font-family: "Noto Sans JP";
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: 0;
+  }
+  .Body16Bold {
+    font-family: "Noto Sans JP";
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0;
+  }
+  .Body16Medium {
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0;
+  }
+  .Body16Regular {
+    font-family: "Noto Sans JP";
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0;
+  }
+  .Body14Bold {
+    font-family: "Noto Sans JP";
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+  .Body14Medium {
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+  .Body14Regular {
+    font-family: "Noto Sans JP";
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 22px;
+    letter-spacing: 0;
+  }
+  .Body12Medium {
+    font-family: "Noto Sans JP";
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0;
+  }
+  .Body12Regular {
+    font-family: "Noto Sans JP";
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 20px;
+    letter-spacing: 0;
   }
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--white);
+  color: var(--black);
+  font-family: "Noto Sans JP", sans-serif;
 }
