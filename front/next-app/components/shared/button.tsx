@@ -24,7 +24,7 @@ export function Button({
     <button
       className={`
         ${width}
-        h-14 bg-beige-orange-500 text-white Body14Bold rounded-lg shadow-button
+        h-14 bg-beige-orange-500 text-white Body14Bold rounded-lg shadow-beige-orange-400
       `}
     >
       {iconPosition === "left" && (

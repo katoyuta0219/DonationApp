@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "こども食堂 ひまわり",
+    "category": "食品・日用品",
+    "explanation": "地域の子どもたちに温かい食事と居場所を提供しています。食材や調理器具、食器などの寄付を募集中です。",
+    "iconSrc": "/almond-nui.jpg",
+    "imageSrc": "linear-gradient(135deg, #FFF9E6 0%, #FFE4B5 100%)",
+    "necessity": 5,
+    "createdAt": "2025-11-01"
+  },
+  {
+    "id": 2,
+    "name": "NPO法人 本のかけはし",
+    "category": "書籍・学用品",
+    "explanation": "読み終わった本を子どもたちへ。絵本や児童書、学習参考書などを集めて学校や施設に届けています。",
+    "iconSrc": "/almond-nui.jpg",
+    "imageSrc": "linear-gradient(135deg, #E6F3FF 0%, #B3D9FF 100%)",
+    "necessity": 3,
+    "createdAt": "2025-10-28"
+  },
+  {
+    "id": 3,
+    "name": "シニアサポートセンター",
+    "category": "家具・家電",
+    "explanation": "高齢者の方々が快適に暮らせるよう、家具や家電製品の寄付を受け付けています。椅子、テーブル、小型家電など。",
+    "iconSrc": "/almond-nui.jpg",
+    "imageSrc": "linear-gradient(135deg, #F0E6FF 0%, #D4BBFF 100%)",
+    "necessity": 4,
+    "createdAt": "2025-11-05"
+  },
+  {
+    "id": 4,
+    "name": "防災ネットワーク",
+    "category": "防災用品",
+    "explanation": "災害時の備えを地域全体で。非常食、懐中電灯、毛布などの防災用品を集めて備蓄しています。",
+    "iconSrc": "/almond-nui.jpg",
+    "imageSrc": "linear-gradient(135deg, #FFE6E6 0%, #FFB3B3 100%)",
+    "necessity": 5,
+    "createdAt": "2025-11-07"
+  },
+  {
+    "id": 5,
+    "name": "リユースファッション",
+    "category": "衣類",
+    "explanation": "まだ着られる衣類を必要な方へ。季節の洋服、子供服、靴などを回収し、福祉施設や困窮家庭に提供します。",
+    "iconSrc": "/almond-nui.jpg",
+    "imageSrc": "linear-gradient(135deg, #E6FFEE 0%, #B3FFD1 100%)",
+    "necessity": 2,
+    "createdAt": "2025-10-25"
+  }
+]
