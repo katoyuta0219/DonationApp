@@ -1,7 +1,8 @@
 import axios from "axios";
 import humps from "humps";
 
-export interface OrganizationsResponse {
+export type OrganizationsResponse =
+  | {
   id: number;
   name: string;
   iconSrc: string;
@@ -10,7 +11,11 @@ export interface OrganizationsResponse {
   description: string;
   contact: string;
   image: string;
-}
+  }
+  | {
+    success: false;
+    message: string;
+  }
 
 export async function Organizations(id: number):Promise<OrganizationsResponse> {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/${id}`;
