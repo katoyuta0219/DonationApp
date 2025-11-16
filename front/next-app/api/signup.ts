@@ -14,7 +14,10 @@ export type SignupResponse =
   | {
     success: false;
     message: string;
-    errors?: { err: string };
+    errors?: { 
+      name: [string];
+      password: [string];
+    };
   }
 
 export async function Signup({

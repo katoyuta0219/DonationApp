@@ -2,8 +2,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 export interface GetCurrentUserResponse {
+  id: number
   name: string;
-  iconSrc: string;
 }
 
 export async function GetCurrentUser():Promise<GetCurrentUserResponse> {
