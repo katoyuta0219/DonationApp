@@ -16,7 +16,12 @@ export async function GetProfile():Promise<GetProfileResponse> {
   const authToken = Cookies.get("authToken");
 
   return axios
-    .get(apiUrl)
+    .get(apiUrl, {
+    headers: {
+        Authorization: `Bearer ${authToken}`,
+        Accept: "application/json"
+      }
+    })
     .then((res) => {
       return res.data = humps.camelizeKeys(res.data) as typeof res.data;
     })
