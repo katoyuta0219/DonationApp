@@ -82,77 +82,77 @@
   .Heading32 {
     font-family: "Noto Sans JP";
     font-weight: 700;
-    font-size: 32px;
+    font-size: 2rem;
     line-height: 40px;
     letter-spacing: 0;
   }
   .Heading24 {
     font-family: "Noto Sans JP";
     font-weight: 700;
-    font-size: 24px;
+    font-size: 1.5rem;
     line-height: 34px;
     letter-spacing: 0;
   }
   .Heading20 {
     font-family: "Noto Sans JP";
     font-weight: 700;
-    font-size: 20px;
+    font-size: 1.25rem;
     line-height: 28px;
     letter-spacing: 0;
   }
   .Body16Bold {
     font-family: "Noto Sans JP";
     font-weight: 700;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 26px;
     letter-spacing: 0;
   }
   .Body16Medium {
     font-family: "Noto Sans JP";
     font-weight: 500;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 26px;
     letter-spacing: 0;
   }
   .Body16Regular {
     font-family: "Noto Sans JP";
     font-weight: 300;
-    font-size: 16px;
+    font-size: 1rem;
     line-height: 26px;
     letter-spacing: 0;
   }
   .Body14Bold {
     font-family: "Noto Sans JP";
     font-weight: 700;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 22px;
     letter-spacing: 0;
   }
   .Body14Medium {
     font-family: "Noto Sans JP";
     font-weight: 500;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 22px;
     letter-spacing: 0;
   }
   .Body14Regular {
     font-family: "Noto Sans JP";
     font-weight: 300;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 22px;
     letter-spacing: 0;
   }
   .Body12Medium {
     font-family: "Noto Sans JP";
     font-weight: 500;
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 20px;
     letter-spacing: 0;
   }
   .Body12Regular {
     font-family: "Noto Sans JP";
     font-weight: 300;
-    font-size: 12px;
+    font-size: 0.75rem;
     line-height: 20px;
     letter-spacing: 0;
   }

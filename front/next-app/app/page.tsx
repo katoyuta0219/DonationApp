@@ -1,11 +1,21 @@
+"use client";
+
 import Image from "next/image"
+import { useState, useEffect } from "react";
+import { NavigationBar } from "@/components/shared"
 import { DonationCard } from "@/components/features/donation/donation-card"
 import { Donation } from "@/types/donation/types"
 import donationMockData from "@/data/donation-mock-data.json"
 
 export default function Home() {
+  const [isNavActive, setIsNavActive] = useState(false);
   const donations = donationMockData as Donation[];
   
+
+  useEffect(() => {
+    console.log(isNavActive);
+  }, [isNavActive]);
+
   return (
     <main>
       <div className="fixed top-0 left-0 w-screen h-14 bg-white py-2 px-8 border-b-[0.5px] border-gray-300 mb-6 shadow-gray-300 z-10">
@@ -31,6 +41,10 @@ export default function Home() {
           ))}
         </ul>
       </section>
+      <NavigationBar 
+        isActive={isNavActive}
+        setIsActive={setIsNavActive}
+      />
     </main>
   )
 }

@@ -20,8 +20,8 @@ export function DonationCard({
       className="inline-block w-76 bg-white rounded-lg shadow-gray-300"
     >
       <div
-        className="relative h-30 rounded-t-lg shadow-inner"
-        style={{ background: imageSrc }}
+        className="relative h-30 rounded-t-lg shadow-inner bg-cover bg-position-[0_25%]"
+        style={{ backgroundImage: `url(${imageSrc})` }}
       >
         <div className="flex items-center gap-4 absolute bottom-3 left-3 Body16Bold text-white">
           <Image
