@@ -31,7 +31,7 @@ export function NavigationBar({
                 href={item.href}
                 className="flex flex-col items-center text-beige-orange-400 Body12Medium"
               >
-                <div className={`cursor-pointer ${activeIndex ?? "flex items-center justify-center w-11 h-11 bg-beige-orange-700 border-3 border-white rounded-full"}`}>
+                <div className={`cursor-pointer ${activeIndex && "flex items-center justify-center w-11 h-11 bg-beige-orange-700 border-3 border-white rounded-full"}`}>
                   <Image
                     src={`/icons/${item.iconSrc}/${activeIndex ? "white" : "beige-orange-400"}.svg`}
                     alt={`${item.iconSrc}-icon`}
