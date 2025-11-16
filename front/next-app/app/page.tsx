@@ -25,7 +25,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="mb-22">
       <div className="fixed top-0 left-0 w-screen h-14 bg-white py-2 px-8 border-b-[0.5px] border-gray-300 mb-6 shadow-gray-300 z-10">
         {/* <Image 
           src=""
@@ -35,7 +35,7 @@ export default function Home() {
         /> */}
         ロゴが入ります
       </div>
-      <section className="flex flex-col items-center gap-6 mt-35">
+      <section className="flex flex-col items-center gap-6 mt-20">
         <div className="w-82 Heading20 text-beige-orange-700 px-1.5 py-3 border-b-3 border-beige-orange-700">
           <h1>
             寄付できる団体
