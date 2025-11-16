@@ -28,7 +28,7 @@ export default function Login() {
             size="normal"
             type="password"
             placeholder="パスワードを入力"
-            iconSrc="/icons/password-icon.svg"
+            iconSrc="/icons/password/gray-500.svg"
             iconAlt="password-icon"
           />
         </div>
@@ -53,7 +53,7 @@ export default function Login() {
           アカウントをお持ちではないですか？
         </p>
         <Link 
-          href="/public/signup"
+          href="/signup"
           className="text-rose-pink-800 Body12Medium"
         >
           新規登録
