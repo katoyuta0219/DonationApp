@@ -31,15 +31,7 @@ export function NavigationBar({
                 href={item.href}
                 className="flex flex-col items-center text-beige-orange-400 Body12Medium"
               >
-                <div
-                  className={`
-                    ${activeIndex
-                      ? "flex items-center justify-center w-11 h-11 bg-beige-orange-700 border-3 border-white rounded-full"  
-                      : ""
-                    } 
-                    cursor-pointer
-                  `}
-                >
+                <div className={`cursor-pointer ${activeIndex ?? "flex items-center justify-center w-11 h-11 bg-beige-orange-700 border-3 border-white rounded-full"}`}>
                   <Image
                     src={`/icons/${item.iconSrc}/${activeIndex ? "white" : "beige-orange-400"}.svg`}
                     alt={`${item.iconSrc}-icon`}
@@ -47,12 +39,7 @@ export function NavigationBar({
                     height={24}
                   />
                 </div>
-                <p
-                  className={`
-                    ${activeIndex && "text-beige-orange-700"}
-                    Body12Regular
-                  `}
-                >
+                <p className={`Body12Regular ${activeIndex && "text-beige-orange-700"}`}>
                   {item.text}
                 </p>
               </Link>
