@@ -15,6 +15,9 @@ export function Button({
   iconAlt,
   iconPosition
 }: ButtonProps) {
+  // small:   w-48 (192px) 
+  // normal:  w-79 (316px)
+  // large:   w-82 (328px)
   const width = 
     size === "normal" ? "w-79"
       : size === "small" ? "w-48"
@@ -24,7 +27,7 @@ export function Button({
     <button
       className={`
         ${width}
-        h-14 bg-beige-orange-500 text-white Body14Bold rounded-lg shadow-beige-orange-400
+        flex justify-center items-center gap-2 h-14 bg-beige-orange-500 text-white Body14Bold rounded-lg shadow-beige-orange-400
       `}
     >
       {iconPosition === "left" && (
@@ -45,5 +48,5 @@ export function Button({
         />
       )}
     </button>
-  )
+  );
 }
