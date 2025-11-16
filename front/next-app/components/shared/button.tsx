@@ -33,7 +33,7 @@ export function Button({
         ${className} ${width}
         flex justify-center items-center gap-2 h-14 bg-beige-orange-500 text-white Body14Bold rounded-lg shadow-beige-orange-400 cursor-pointer
       `}
-      onClick={() => onClick}
+      onClick={() => onClick?.()}
     >
       {iconPosition === "left" && (
         <Image 
