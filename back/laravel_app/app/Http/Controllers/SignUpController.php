@@ -19,14 +19,15 @@ class SignUpController extends Controller
                 'password' => 'required|string|min:7' //confirmed -> パスワード再入力と値が同じかどうか
             ]);
 
-            User::create([
+            $user = User::create([
                 'name' => $validated['name'],
                 'password' => Hash::make($validated['password'])
             ]);
 
             return response()->json([
                 'success' => true,
-                'message' => '取得に成功しました'
+                'message' => '取得に成功しました',
+                'token' => $user->createToken('access_token')->plainTextToken
             ]);
         } catch (ValidationException $e) {
             return response()->json([
