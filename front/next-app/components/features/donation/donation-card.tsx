@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link";
 import { Donation } from "@/types/donation/types"
 
-type DonationCardProps = Pick<Donation, "id" | "name" | "category" | "explanation" | "iconSrc" | "imageSrc" | "necessity" | "createdAt">;
+type DonationCardProps = Pick<Donation, "id" | "name" | "category" | "explanation" | "iconSrc" | "imageSrc" | "necessity" | "deadline">;
 
 export function DonationCard({
   id,
@@ -12,7 +12,7 @@ export function DonationCard({
   iconSrc,
   imageSrc,
   necessity,
-  createdAt
+  deadline
 }: DonationCardProps) {
   return (
     <Link 
@@ -45,7 +45,7 @@ export function DonationCard({
         </p>
         <div className="flex justify-between mt-8 Body12Regular text-black">
           <p>
-            {createdAt}
+            {deadline}まで
           </p>
           <ul className="flex">
             {Array.from({ length: 5 }, (_, index) => {
