@@ -16,7 +16,7 @@ export function DonationCard({
 }: DonationCardProps) {
   return (
     <Link 
-      href={`public/donation/${id}/`}
+      href={`donation/${id}/`}
       className="inline-block w-76 bg-white rounded-lg shadow-gray-300"
     >
       <div
