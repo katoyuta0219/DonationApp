@@ -74,6 +74,7 @@
 
   /* ドロップシャドウ */
   --shadow-beige-orange-400: 0 2px 8px 2px var(--color-beige-orange-400);
+  --shadow-beige-orange-900: 0 3px 6px rgba(var(--color-beige-orange-900), 0.25);
   --shadow-gray-300: 0 2px 5px -2px var(--color-gray-300);
   --shadow-inner: inset 0 -40px 40px -20px var(--color-gray-700);
 }

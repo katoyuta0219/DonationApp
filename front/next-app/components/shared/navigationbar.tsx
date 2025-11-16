@@ -17,7 +17,7 @@ export function NavigationBar({
   ];
 
   return (
-    <nav className="fixed left-[50%] translate-x-[-50%] bottom-8 w-86 h-14 bg-white shadow-[0_3px_6px_rgba(235,106,18,0.25)] rounded-xl">
+    <nav className="fixed left-1/2 translate-x-[-50%] bottom-8 w-86 h-14 bg-white shadow-beige-orange-900 rounded-xl">
       <ul className="flex h-full px-6 justify-around items-center">
         {navigationBarItems.map((item, i) => {
           const activeIndex = pathname === item.href;
