@@ -6,6 +6,8 @@ interface ButtonProps {
   iconSrc?: string | undefined;
   iconAlt?: string | undefined;
   iconPosition?: "left" | "right";
+  className?: string;
+  onClick?: () => void;
 }
 
 export function Button({
@@ -13,7 +15,9 @@ export function Button({
   text, 
   iconSrc,
   iconAlt,
-  iconPosition
+  iconPosition,
+  className,
+  onClick,
 }: ButtonProps) {
   // small:   w-48 (192px) 
   // normal:  w-79 (316px)
@@ -26,9 +30,10 @@ export function Button({
   return (
     <button
       className={`
-        ${width}
+        ${className} ${width}
         flex justify-center items-center gap-2 h-14 bg-beige-orange-500 text-white Body14Bold rounded-lg shadow-beige-orange-400 cursor-pointer
       `}
+      onClick={() => onClick}
     >
       {iconPosition === "left" && (
         <Image 
