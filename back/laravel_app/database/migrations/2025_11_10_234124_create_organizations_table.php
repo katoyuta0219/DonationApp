@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('admin_id'); // 主キー（PK）
+            $table->unsignedBigInteger('admin_id'); //外部
 
             $table->string('donation_organization_name');
             $table->string('icon_image');

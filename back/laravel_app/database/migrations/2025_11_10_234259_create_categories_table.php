@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) { //カラムの型をどうするか
             $table->id();
             $table->string('name');
-            $table->timestamps();
         });
     }
 

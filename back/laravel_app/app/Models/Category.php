@@ -8,13 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Category extends Model
 {
     protected $fillable = [
-        'clothing',
-        'furniture_appliances',
-        'books_supplies',
-        'food_daily',
-        'disaster_supplies',
-        'pet_supplies',
-        'toys_baby'
+        'name',
     ];
 
     public function categoryRequest(): BelongsToMany

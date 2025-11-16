@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Hash;
 
 class SignUpController extends Controller
@@ -14,8 +15,8 @@ class SignUpController extends Controller
             // $name = $request->input('name');
             // $password = $request->input('password');
             $validated = $request->validate([
-            'name' => 'required|string|max:255|unique:users', //required -> 入力必須　：　string -> 文字列 : max:255 -> 255文字以内 : unique:users -> 同じ名前はだめ
-            'password' => 'required|string|min:7|confirmed' //confirmed -> パスワード再入力と値が同じかどうか
+                'name' => 'required|string|max:255|unique:users', //required -> 入力必須　：　string -> 文字列 : max:255 -> 255文字以内 : unique:users -> 同じ名前はだめ
+                'password' => 'required|string|min:7' //confirmed -> パスワード再入力と値が同じかどうか
             ]);
 
             User::create([
@@ -27,6 +28,12 @@ class SignUpController extends Controller
                 'success' => true,
                 'message' => '取得に成功しました'
             ]);
+        } catch (ValidationException $e) {
+            return response()->json([
+                'success' => false,
+                'message' => 'バリデーションエラー',
+                'errors' => $e->errors()
+            ], 422);
         } catch (\Exception $e) {
             return response()->json([
                 'success' => false,
