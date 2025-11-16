@@ -1,20 +1,28 @@
 "use client";
 
 import Image from "next/image"
-import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { NavigationBar } from "@/components/shared"
 import { DonationCard } from "@/components/features/donation/donation-card"
 import { Donation } from "@/types/donation/types"
 import donationMockData from "@/data/donation-mock-data.json"
 
 export default function Home() {
-  const [isNavActive, setIsNavActive] = useState(false);
+  const pathname = usePathname();
   const donations = donationMockData as Donation[];
-  
 
-  useEffect(() => {
-    console.log(isNavActive);
-  }, [isNavActive]);
+  const getActiveIndex = () => {
+    switch(pathname) {
+      case "/":
+        return 0;
+      case "/search":
+        return 1;
+      case "/profile":
+        return 2;
+      default:
+        return 0;
+    }
+  };
 
   return (
     <main>
@@ -42,8 +50,8 @@ export default function Home() {
         </ul>
       </section>
       <NavigationBar 
-        isActive={isNavActive}
-        setIsActive={setIsNavActive}
+        isActive={getActiveIndex()}
+        pathname={pathname}
       />
     </main>
   )
