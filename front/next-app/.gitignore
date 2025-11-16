@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/public/almond-nui.jpg
+/public/yuse-honmono.jpg
