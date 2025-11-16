@@ -1,6 +1,12 @@
 import axios from "axios";
 import humps from "humps";
 
+export interface DonationsResponse {
+  id: number;
+  necessity: string;
+  detail: string;
+}
+
 export async function Donations() {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/donations`;
 
