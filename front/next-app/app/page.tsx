@@ -1,15 +1,16 @@
 "use client";
 
 import Image from "next/image"
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { NavigationBar } from "@/components/shared"
 import { DonationCard } from "@/components/features/donation/donation-card"
 import { Donation } from "@/types/donation/types"
-import donationMockData from "@/data/donation-mock-data.json"
+import { Donations } from "@/api";
 
 export default function Home() {
   const pathname = usePathname();
-  const donations = donationMockData as Donation[];
+  const [donations, setDonations] = useState<Donation[]>();
 
   const getActiveIndex = () => {
     switch(pathname) {
@@ -23,6 +24,20 @@ export default function Home() {
         return 0;
     }
   };
+
+  useEffect(() => {
+    const fetchDonations = async () => {
+      try {
+        const response = await Donations();
+
+        setDonations(response);
+        console.log("取得に成功しました");
+      } catch (error) {
+        console.error("取得に失敗しました: ", error);
+      }
+    }
+    fetchDonations();
+  }, []);
 
   return (
     <main className="mb-22">
@@ -42,7 +57,7 @@ export default function Home() {
           </h1>
         </div>
         <ul className="flex flex-col gap-6 mb-6">
-          {donations.map((donation) => (
+          {donations?.map((donation) => (
             <li key={donation.id}>
               <DonationCard {...donation} />
             </li>
