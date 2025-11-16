@@ -9,5 +9,5 @@ export interface Donation {
   iconSrc: string;
   imageSrc: string;
   necessity: 1 | 2 | 3 | 4 | 5;
-  createdAt: string;
+  deadline: string;
 }
