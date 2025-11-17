@@ -1,17 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { NavigationBar, Button } from "@/components/shared";
 import { DonationCard } from "@/components/features/donation/donation-card";
-import { Donation } from "@/types/donation/types";
+import { Donation, Category } from "@/types/donation/types";
+import { GetCategoryes } from "@/api";
 import donationMockData from "@/data/donation-mock-data.json"
 
 export default function Search() {
   const pathname = usePathname();
   const [isSearched, setIsSearched] = useState(false);
-  const donations = donationMockData as Donation[];
+  const [categoryes, setCategoryes] = useState<Category[]>([]);
+  const donations = donationMockData as unknown as Donation[];
 
   const getActiveIndex = () => {
     switch(pathname) {
@@ -26,20 +28,23 @@ export default function Search() {
     }
   };
 
-  const categoryes = [
-    { key: "clothing", text: "衣類" },
-    { key: "furniture-appliances", text: "家具・家電"},
-    { key: "books-school-supplies", text: "書籍・学用品" },
-    { key: "food-daily-necessities", text: "食品・日用品" },
-    { key: "disaster-prevention", text: "防災用品" },
-    { key: "pets", text: "ペット用品" },
-    { key: "toys-baby", text: "おもちゃ・ベビー用品" },
-  ];
-
   const handleSearch = () => {
     console.log("hello");
     setIsSearched(true);
   };
+
+  useEffect(() => {
+    const fetchCategoryes = async () => {
+      try {
+        const response = await GetCategoryes();
+
+        setCategoryes(response);
+      } catch (error) {
+        console.error("カテゴリの取得に失敗しました: ", error);
+      };
+    };
+    fetchCategoryes();
+  });
 
   return (
     <main className="mb-28">
@@ -108,16 +113,16 @@ export default function Search() {
                 >
                   <input 
                     type="checkbox"
-                    id={category.key}
+                    id={String(category.id)}
                     className="
                       appearance-none w-7 h-7 bg-white bg-[url(/icons/check/gray-400.svg)] bg-center border border-gray-400 box-border rounded-md shadow-[0_2px_2px_-1px_#959595]
                       checked:bg-[url(/icons/check/rose-pink-500.svg)] checked:border-2 checked:border-rose-pink-900
                     "
                   />
                   <label 
-                    htmlFor={category.key}
+                    htmlFor={String(category.id)}
                   >
-                    {category.text}
+                    {category.name}
                   </label>
                 </div>
               ))}
