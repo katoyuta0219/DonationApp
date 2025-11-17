@@ -7,13 +7,14 @@ import { NavigationBar, Button } from "@/components/shared";
 import { DonationCard } from "@/components/features/donation/donation-card";
 import { Donation, Category } from "@/types/donation/types";
 import { GetCategoryes, Donations } from "@/api";
-import donationMockData from "@/data/donation-mock-data.json"
 
 export default function Search() {
   const pathname = usePathname();
   const [isSearched, setIsSearched] = useState(false);
   const [categoryes, setCategoryes] = useState<Category[]>([]);
-  const donations = donationMockData as unknown as Donation[];
+  const [category, setCategory] = useState("");
+  const [necessity, setNecessity] = useState(0);
+  const [donations, setDonations] = useState<Donation[]>([]);
 
   const getActiveIndex = () => {
     switch(pathname) {
@@ -29,9 +30,23 @@ export default function Search() {
   };
 
   const handleSearch = () => {
-    console.log("hello");
+    fetchDonations();
     setIsSearched(true);
   };
+
+  const fetchDonations = async () => {
+    try {
+      const response = await Donations({ 
+        categoryIds: [Number(category)],
+        necessity: necessity
+      })
+
+      console.log(response);
+      setDonations(response);
+    } catch (error) {
+      console.error("寄付団体一覧の取得に失敗しました: ", error);
+    }
+  }
 
   useEffect(() => {
     const fetchCategoryes = async () => {
@@ -80,12 +95,23 @@ export default function Search() {
       {isSearched ? (
         <section className="flex flex-col items-center gap-6 mt-22">
           <h2 className="Heading20 text-black text-left w-76">
-            {donations.length}件見つかりました
+            {donations.length === 0 ? (
+              <p>お探しの条件では見つかりませんでした</p>
+            ) : (
+              <p>{donations.length}件見つかりました</p>
+            )}
           </h2>
           <ul className="flex flex-col gap-6">
             {donations.map((donation) => (
               <li key={donation.id}>
-                <DonationCard {...donation}/>
+                <DonationCard 
+                  id={donation.id}
+                  degreeOfNecessity={donation.degreeOfNecessity}
+                  organization={donation.organization}
+                  requestCategories={donation.requestCategories}
+                  deadline={donation.deadline}
+                  recruitmentDetails={donation.recruitmentDetails}
+                />
               </li>
             ))}
           </ul>
@@ -114,6 +140,7 @@ export default function Search() {
                   <input 
                     type="checkbox"
                     id={String(category.id)}
+                    onChange={() => setCategory(category.name)}
                     className="
                       appearance-none w-7 h-7 bg-white bg-[url(/icons/check/gray-400.svg)] bg-center border border-gray-400 box-border rounded-md shadow-[0_2px_2px_-1px_#959595]
                       checked:bg-[url(/icons/check/rose-pink-500.svg)] checked:border-2 checked:border-rose-pink-900
@@ -148,6 +175,7 @@ export default function Search() {
                     <input 
                       type="checkbox"
                       id={String(i)}
+                      onChange={() => setNecessity(i+1)}
                       className="
                         appearance-none w-7 h-7 bg-white bg-[url(/icons/check/gray-400.svg)] bg-center border border-gray-400 box-border rounded-md shadow-[0_2px_2px_-1px_#959595]
                         checked:bg-[url(/icons/check/rose-pink-500.svg)] checked:border-2 checked:border-rose-pink-900
