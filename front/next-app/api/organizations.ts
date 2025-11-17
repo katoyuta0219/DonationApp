@@ -3,6 +3,7 @@ import humps from "humps";
 
 export type OrganizationsResponse =
   | {
+    success: true;
     id: number;
     name: string;
     iconSrc: string;
@@ -17,7 +18,7 @@ export type OrganizationsResponse =
     message: string;
   }
 
-export async function Organizations(id: number):Promise<OrganizationsResponse> {
+export async function Organizations(id: string):Promise<OrganizationsResponse> {
   const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/${id}`;
 
   return axios

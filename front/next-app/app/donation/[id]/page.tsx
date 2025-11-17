@@ -7,7 +7,7 @@ import { Button } from "@/components/shared";
 import donationMockData from "@/data/donation-mock-data.json"
 
 export default function DonationDetail() {
-  const donations = donationMockData as Donation[];
+  const donations = donationMockData as unknown as Donation[];
   const donation = donations[0];
 
   const router = useRouter();

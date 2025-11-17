@@ -29,6 +29,7 @@ export interface Organization {
   id: number;
   donationOrganizationName: string;
   iconImage: string;
+  activityDescription: string;
   organizationImages: string[];
 }
 
