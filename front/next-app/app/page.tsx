@@ -31,7 +31,7 @@ export default function Home() {
         const response = await Donations();
 
         setDonations(response);
-        console.log("取得に成功しました");
+        console.log("取得に成功しました: ", response);
       } catch (error) {
         console.error("取得に失敗しました: ", error);
       }

@@ -2,13 +2,13 @@ import Image from "next/image"
 import Link from "next/link";
 import { Donation } from "@/types/donation/types"
 
-type DonationCardProps = Pick<Donation, "id" | "name" | "category" | "explanation" | "iconSrc" | "imageSrc" | "necessity" | "deadline">;
+type DonationCardProps = Pick<Donation, "id" | "name" | "category" | "recruitmentDetails" | "iconSrc" | "imageSrc" | "necessity" | "deadline">;
 
 export function DonationCard({
   id,
   name,
   category,
-  explanation,
+  recruitmentDetails,
   iconSrc,
   imageSrc,
   necessity,
@@ -41,7 +41,7 @@ export function DonationCard({
           {category}
         </span>
         <p className="mt-2 Body12Regular text-black">
-          {explanation}
+          {recruitmentDetails}
         </p>
         <div className="flex justify-between mt-8 Body12Regular text-black">
           <p>

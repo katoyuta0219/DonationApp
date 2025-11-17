@@ -3,14 +3,14 @@ import humps from "humps";
 
 export type OrganizationsResponse =
   | {
-  id: number;
-  name: string;
-  iconSrc: string;
-  representativeName: string;
-  address: string;
-  description: string;
-  contact: string;
-  image: string;
+    id: number;
+    name: string;
+    iconSrc: string;
+    representativeName: string;
+    address: string;
+    description: string;
+    contact: string;
+    image: string;
   }
   | {
     success: false;

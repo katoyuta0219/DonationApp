@@ -2,7 +2,7 @@ import { DonationHistory } from "@/types/donation/types"
 
 export function DonationHistoryCard({
   name,
-  explanation,
+  recruitmentDetails,
   category,
   createdAt
 }: DonationHistory) {
@@ -13,7 +13,7 @@ export function DonationHistoryCard({
           {name}
         </h3>
         <p className="Body12Regular">
-          {explanation}
+          {recruitmentDetails}
         </p>
       </div>
       <div className="flex items-center justify-between Body12Regular">
