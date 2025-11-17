@@ -12,7 +12,7 @@ export function DonationCard({
   iconSrc,
   imageSrc,
   necessity,
-  deadline
+  deadline,
 }: DonationCardProps) {
   return (
     <Link 

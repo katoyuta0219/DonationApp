@@ -10,6 +10,7 @@ export interface Donation {
   imageSrc: string;
   necessity: 1 | 2 | 3 | 4 | 5;
   deadline: string;
+  organizationId: number;
 }
 
 export interface DonationHistory {
