@@ -1,27 +1,32 @@
 import axios from "axios";
 import humps from "humps";
+import { Donation } from "@/types/donation/types";
 
 export interface DonationsRequest {
-  categoryIds: number[];
-  necessity: number;
-}
-
-export interface DonationsResponse {
-  id: number;
-  necessity: string;
-  detail: string;
+  categoryIds?: number[];
+  necessity?: number;
 }
 
 export async function Donations({
   categoryIds,
   necessity,
-}: DonationsRequest) {
-  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/donations?categoryIds[]=${categoryIds}&necessity=${necessity}`;
+}: DonationsRequest): Promise<Donation[]> {
+  const params = new URLSearchParams();
+  
+  if (categoryIds && categoryIds.length > 0) {
+    categoryIds.forEach(id => params.append('categoryIds[]', id.toString()));
+  }
+  
+  if (necessity !== undefined) {
+    params.append('necessity', necessity.toString());
+  }
+
+  const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/donations${params.toString() ? `?${params.toString()}` : ""}`;
 
   return axios
     .get(apiUrl)
     .then((res) => {
-      return res.data = humps.camelizeKeys(res.data) as typeof res.data;
+      return humps.camelizeKeys(res.data) as Donation[];
     })
     .catch((err) => {
       throw err;

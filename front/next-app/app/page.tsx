@@ -28,7 +28,10 @@ export default function Home() {
   useEffect(() => {
     const fetchDonations = async () => {
       try {
-        const response = await Donations();
+        const response = await Donations({
+          categoryIds: [],
+          necessity: undefined
+        });
 
         setDonations(response);
         console.log("取得に成功しました: ", response);
@@ -59,7 +62,14 @@ export default function Home() {
         <ul className="flex flex-col gap-6 mb-6">
           {donations?.map((donation) => (
             <li key={donation.id}>
-              <DonationCard {...donation} />
+              <DonationCard 
+                id={donation.id}
+                degreeOfNecessity={donation.degreeOfNecessity}
+                organization={donation.organization}
+                requestCategories={donation.requestCategories}
+                deadline={donation.deadline}
+                recruitmentDetails={donation.recruitmentDetails}
+              />
             </li>
           ))}
         </ul>
