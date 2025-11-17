@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { NavigationBar, Button } from "@/components/shared";
 import { DonationCard } from "@/components/features/donation/donation-card";
 import { Donation, Category } from "@/types/donation/types";
-import { GetCategoryes } from "@/api";
+import { GetCategoryes, Donations } from "@/api";
 import donationMockData from "@/data/donation-mock-data.json"
 
 export default function Search() {
