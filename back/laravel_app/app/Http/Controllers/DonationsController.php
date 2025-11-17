@@ -15,13 +15,18 @@ class DonationsController extends Controller
         try {
             $categoryIds = $request->get('categoryIds');
             $necessity = $request->get('necessity');
-            $donations = DonationRequest::query();
+            $donations = DonationRequest::query()
+                ->with([
+                    'organization:id,donation_organization_name,icon_image,organization_images',
+                    'requestCategories:id,name'
+                ]);
+
             if ($categoryIds) {
                 $donations = $donations->whereHas('requestCategories', function ($query) use ($categoryIds) {
                     $query->whereIn('id', $categoryIds);
                 });
             }
-            if($necessity){
+            if ($necessity) {
                 $donations = $donations->where('degree_of_necessity', $necessity);
             }
             return response()->json($donations->get());
