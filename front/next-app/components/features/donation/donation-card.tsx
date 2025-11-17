@@ -2,18 +2,43 @@ import Image from "next/image"
 import Link from "next/link";
 import { Donation } from "@/types/donation/types"
 
-type DonationCardProps = Pick<Donation, "id" | "name" | "category" | "recruitmentDetails" | "iconSrc" | "imageSrc" | "necessity" | "deadline">;
+type DonationCardProps = Pick<Donation, "id" | "recruitmentDetails" | "degreeOfNecessity" | "deadline" | "requestCategories" | "organization">;
 
 export function DonationCard({
   id,
-  name,
-  category,
+  organization,
+  requestCategories,
   recruitmentDetails,
-  iconSrc,
-  imageSrc,
-  necessity,
+  degreeOfNecessity,
   deadline,
 }: DonationCardProps) {
+  const getValidIconImageUrl = (url: string | null | undefined): string => {
+    if (!url || url.trim() === '') {
+      return '/almond-nui.jpg';
+    }
+    
+    if (url.startsWith('/') || url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+    
+    return '/almond-nui.jpg';
+  };
+
+  const getValidBgImageUrl = (url: string | null | undefined): string => {
+    if (!url || url.trim() === '') {
+      return '/yuse-honmono.jpg';
+    }
+    
+    if (url.startsWith('/') || url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    }
+    
+    return '/yuse-honmono.jpg';
+  };
+
+  const iconImageUrl = getValidIconImageUrl(organization.iconImage);
+  const bgImageUrl = getValidBgImageUrl(organization.organizationImages[0]);
+
   return (
     <Link 
       href={`donation/${id}/`}
@@ -21,24 +46,24 @@ export function DonationCard({
     >
       <div
         className="relative h-30 rounded-t-lg shadow-inner bg-cover bg-position-[0_25%]"
-        style={{ backgroundImage: `url(${imageSrc})` }}
+        style={{ backgroundImage: `url(${bgImageUrl})` }}
       >
         <div className="flex items-center gap-4 absolute bottom-3 left-3 Body16Bold text-white">
           <Image
-            src={iconSrc}
-            alt={`${name}-icon`}
+            src={iconImageUrl}
+            alt={`${organization.donationOrganizationName}-icon`}
             width={32}
             height={32}
             className="rounded-sm"
           />
           <p>
-            {name}
+            {organization.donationOrganizationName}
           </p>
         </div>
       </div>
       <div className="p-3">
         <span className="inline-block h-7 py-1 px-8 bg-beige-orange-500 Body12Medium text-white rounded-full">
-          {category}
+          {requestCategories.map(category => category.name).join(', ')}
         </span>
         <p className="mt-2 Body12Regular text-black">
           {recruitmentDetails}
@@ -49,7 +74,7 @@ export function DonationCard({
           </p>
           <ul className="flex">
             {Array.from({ length: 5 }, (_, index) => {
-              const iconSrc = index < necessity ? "rose-pink-700" : "gray-300";
+              const iconSrc = index < degreeOfNecessity ? "rose-pink-700" : "gray-300";
 
               return (
                 <li key={index}>
