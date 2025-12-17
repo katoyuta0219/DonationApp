@@ -12,33 +12,7 @@ export function DonationCard({
   degreeOfNecessity,
   deadline,
 }: DonationCardProps) {
-  const getValidIconImageUrl = (url: string | null | undefined): string => {
-    if (!url || url.trim() === '') {
-      return '/almond-nui.jpg';
-    }
-    
-    if (url.startsWith('/') || url.startsWith('http://') || url.startsWith('https://')) {
-      return url;
-    }
-    
-    return '/almond-nui.jpg';
-  };
-
-  const getValidBgImageUrl = (url: string | null | undefined): string => {
-    if (!url || url.trim() === '') {
-      return '/yuse-honmono.jpg';
-    }
-    
-    if (url.startsWith('/') || url.startsWith('http://') || url.startsWith('https://')) {
-      return url;
-    }
-    
-    return '/yuse-honmono.jpg';
-  };
-
-  const iconImageUrl = getValidIconImageUrl(organization.iconImage);
-  const bgImageUrl = getValidBgImageUrl(organization.organizationImages[0]);
-
+  console.log(organization);
   return (
     <Link 
       href={`donation/${id}/`}
@@ -46,11 +20,11 @@ export function DonationCard({
     >
       <div
         className="relative h-30 rounded-t-lg shadow-inner bg-cover bg-position-[0_25%]"
-        style={{ backgroundImage: `url(${bgImageUrl})` }}
+        style={{ backgroundImage: `url(${organization.organizationImages[0]})` }}
       >
         <div className="flex items-center gap-4 absolute bottom-3 left-3 Body16Bold text-white">
           <Image
-            src={iconImageUrl}
+            src={organization.iconImage}
             alt={`${organization.donationOrganizationName}-icon`}
             width={32}
             height={32}
