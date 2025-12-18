@@ -1,6 +1,6 @@
-import Image from "next/image"
+import Image from "next/image";
 import Link from "next/link";
-import { Donation } from "@/types/donation/types"
+import { Donation } from "@/types/donation/types";
 
 type DonationCardProps = Pick<Donation, "id" | "recruitmentDetails" | "degreeOfNecessity" | "deadline" | "requestCategories" | "organization">;
 
@@ -12,7 +12,7 @@ export function DonationCard({
   degreeOfNecessity,
   deadline,
 }: DonationCardProps) {
-  console.log(organization);
+  console.log(organization.organizationImages);
   return (
     <Link 
       href={`donation/${id}/`}
@@ -20,7 +20,7 @@ export function DonationCard({
     >
       <div
         className="relative h-30 rounded-t-lg shadow-inner bg-cover bg-position-[0_25%]"
-        style={{ backgroundImage: `url(${organization.organizationImages[0]})` }}
+        style={{ backgroundImage: `url(${organization.organizationImages})` }}
       >
         <div className="flex items-center gap-4 absolute bottom-3 left-3 Body16Bold text-white">
           <Image

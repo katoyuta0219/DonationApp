@@ -33,26 +33,26 @@ export default function DonationDetail() {
       <section className="flex flex-col items-center gap-10 mt-14">
         <div className="relative w-full h-64">
           <Image
-            src={donation.imageSrc}
-            alt={`${donation.name}-image`}
+            src={donation.organization.organizationImages[0]}
+            alt={`${donation.organization.donationOrganizationName}-image`}
             className="object-cover"
             sizes="100vw"
             priority
             fill
           />
           <Image
-            src={donation.iconSrc}
-            alt={`${donation.name}-icon`}
+            src={donation.organization.iconImage}
+            alt={`${donation.organization.donationOrganizationName}-icon`}
             width={64}
             height={64}
             className="absolute left-8 -bottom-3 rounded-lg shadow-[0_2px_2px_0_rgba(0,0,0,0.25)] z-10"
           />
         </div>
         <div className="flex flex-col gap-3 w-82 mx-auto">
-          <h1 className="Heading24 text-black">{donation.name}</h1>
+          <h1 className="Heading24 text-black">{donation.organization.donationOrganizationName}</h1>
           <ul className="flex">
             {[...Array(5)].map((_, i) => {
-              const isActive = i+1 <= donation.necessity;
+              const isActive = i+1 <= donation.degreeOfNecessity;
               return (
                 <li key={i}>
                   <Image
@@ -66,10 +66,12 @@ export default function DonationDetail() {
             })}
           </ul>
           <div className="flex items-center justify-center w-min py-1 px-8 Body12Medium text-white bg-beige-orange-500 whitespace-nowrap rounded-full">
-            {donation.category}
+            {donation.requestCategories.map((category) => (
+              <div>{category.name}</div>
+            ))}
           </div>
           <p className="mt-6 text-black Body14Regular">
-            {donation.explanation}
+            {donation.deadline}
           </p>
           <p className="mt-2 text-black Body12Regular">
             {donation.deadline}まで
