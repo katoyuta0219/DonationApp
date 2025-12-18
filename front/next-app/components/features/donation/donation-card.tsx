@@ -12,7 +12,16 @@ export function DonationCard({
   degreeOfNecessity,
   deadline,
 }: DonationCardProps) {
-  console.log(organization.organizationImages);
+  // TODO: 
+  // バックエンド側で organization.organizationImages、organization.iconImage を正常な値として返すように修正
+  // imageUrl は仮でslice
+  // iconImage は仮でNext側の画像を参照（もちろん404）
+
+  const imageUrl = organization.organizationImages.slice(2, -2);
+  const fallbackImage = "/yuse-honmono.jpg";
+  const iconUrl = "/almond-nui.jpg";
+  const fallbackIcon = "/almond-nui.jpg";
+
   return (
     <Link 
       href={`donation/${id}/`}
@@ -20,15 +29,18 @@ export function DonationCard({
     >
       <div
         className="relative h-30 rounded-t-lg shadow-inner bg-cover bg-position-[0_25%]"
-        style={{ backgroundImage: `url(${organization.organizationImages})` }}
+        style={{ backgroundImage: `url(${imageUrl}), url(${fallbackImage})` }}
       >
         <div className="flex items-center gap-4 absolute bottom-3 left-3 Body16Bold text-white">
           <Image
-            src={organization.iconImage}
+            src={`${iconUrl}`}
             alt={`${organization.donationOrganizationName}-icon`}
             width={32}
             height={32}
             className="rounded-sm"
+            onError={(e) => {
+              e.currentTarget.src = fallbackIcon;
+            }}
           />
           <p>
             {organization.donationOrganizationName}
@@ -47,11 +59,11 @@ export function DonationCard({
             {deadline}まで
           </p>
           <ul className="flex">
-            {Array.from({ length: 5 }, (_, index) => {
-              const iconSrc = index < degreeOfNecessity ? "rose-pink-700" : "gray-300";
+            {Array.from({ length: 5 }, (_, i) => {
+              const iconSrc = i< degreeOfNecessity ? "rose-pink-700" : "gray-300";
 
               return (
-                <li key={index}>
+                <li key={i}>
                   <Image 
                     src={`/icons/box/${iconSrc}.svg`}
                     alt=""
