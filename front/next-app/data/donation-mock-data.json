@@ -1,67 +1,132 @@
 [
   {
     "id": 1,
-    "name": "こども食堂 ひまわり",
-    "representativeName": "田中 花子",
-    "email": "himawari@kodomo-shokudo.jp",
-    "address": "東京都渋谷区恵比寿1-2-3",
-    "category": "食品・日用品",
-    "explanation": "地域の子どもたちに温かい食事と居場所を提供しています。食材や調理器具、食器などの寄付を募集中です。",
-    "iconSrc": "/almond-nui.jpg",
-    "imageSrc": "/yuse-honmono.jpg",
-    "necessity": 5,
-    "deadline": "2025-12-01"
+    "degreeOfNecessity": 5,
+    "recruitmentDetails": "地域の子どもたちに温かい食事と居場所を提供しています。食材や調理器具、食器などの寄付を募集中です。",
+    "deadline": "2025-12-01",
+    "organizationId": 1,
+    "createdAt": "2025-11-01T00:00:00Z",
+    "updatedAt": "2025-11-01T00:00:00Z",
+    "organization": {
+      "id": 1,
+      "donationOrganizationName": "こども食堂 ひまわり",
+      "iconImage": "/almond-nui.jpg",
+      "activityDescription": "地域の子どもたちに温かい食事と居場所を提供しています。食材や調理器具、食器などの寄付を募集中です。",
+      "organizationImages": ["/yuse-honmono.jpg"]
+    },
+    "requestCategories": [
+      {
+        "id": 4,
+        "name": "食品・日用品",
+        "pivot": {
+          "donationRequestId": 1,
+          "categoryId": 4
+        }
+      }
+    ]
   },
   {
     "id": 2,
-    "name": "NPO法人 本のかけはし",
-    "representativeName": "佐藤 太郎",
-    "email": "info@hon-kakehashi.org",
-    "address": "神奈川県横浜市中区山下町10-20",
-    "category": "書籍・学用品",
-    "explanation": "読み終わった本を子どもたちへ。絵本や児童書、学習参考書などを集めて学校や施設に届けています。",
-    "iconSrc": "/almond-nui.jpg",
-    "imageSrc": "/yuse-honmono.jpg",
-    "necessity": 3,
-    "deadline": "2025-11-28"
+    "degreeOfNecessity": 3,
+    "recruitmentDetails": "読み終わった本を子どもたちへ。絵本や児童書、学習参考書などを集めて学校や施設に届けています。",
+    "deadline": "2025-11-28",
+    "organizationId": 2,
+    "createdAt": "2025-11-02T00:00:00Z",
+    "updatedAt": "2025-11-02T00:00:00Z",
+    "organization": {
+      "id": 2,
+      "donationOrganizationName": "NPO法人 本のかけはし",
+      "iconImage": "/almond-nui.jpg",
+      "activityDescription": "読み終わった本を子どもたちへ。絵本や児童書、学習参考書などを集めて学校や施設に届けています。",
+      "organizationImages": ["/yuse-honmono.jpg"]
+    },
+    "requestCategories": [
+      {
+        "id": 3,
+        "name": "書籍・学用品",
+        "pivot": {
+          "donationRequestId": 2,
+          "categoryId": 3
+        }
+      }
+    ]
   },
   {
     "id": 3,
-    "name": "シニアサポートセンター",
-    "representativeName": "鈴木 美咲",
-    "email": "support@senior-center.jp",
-    "address": "大阪府大阪市北区梅田3-4-5",
-    "category": "家具・家電",
-    "explanation": "高齢者の方々が快適に暮らせるよう、家具や家電製品の寄付を受け付けています。椅子、テーブル、小型家電など。",
-    "iconSrc": "/almond-nui.jpg",
-    "imageSrc": "/yuse-honmono.jpg",
-    "necessity": 4,
-    "deadline": "2025-12-05"
+    "degreeOfNecessity": 4,
+    "recruitmentDetails": "高齢者の方々が快適に暮らせるよう、家具や家電製品の寄付を受け付けています。椅子、テーブル、小型家電など。",
+    "deadline": "2025-12-05",
+    "organizationId": 3,
+    "createdAt": "2025-11-03T00:00:00Z",
+    "updatedAt": "2025-11-03T00:00:00Z",
+    "organization": {
+      "id": 3,
+      "donationOrganizationName": "シニアサポートセンター",
+      "iconImage": "/almond-nui.jpg",
+      "activityDescription": "高齢者の方々が快適に暮らせるよう、家具や家電製品の寄付を受け付けています。椅子、テーブル、小型家電など。",
+      "organizationImages": ["/yuse-honmono.jpg"]
+    },
+    "requestCategories": [
+      {
+        "id": 2,
+        "name": "家具・家電",
+        "pivot": {
+          "donationRequestId": 3,
+          "categoryId": 2
+        }
+      }
+    ]
   },
   {
     "id": 4,
-    "name": "防災ネットワーク",
-    "representativeName": "高橋 健一",
-    "email": "contact@bousai-network.jp",
-    "address": "愛知県名古屋市中区栄5-6-7",
-    "category": "防災用品",
-    "explanation": "災害時の備えを地域全体で。非常食、懐中電灯、毛布などの防災用品を集めて備蓄しています。",
-    "iconSrc": "/almond-nui.jpg",
-    "imageSrc": "/yuse-honmono.jpg",
-    "necessity": 5,
-    "deadline": "2025-12-07"
+    "degreeOfNecessity": 5,
+    "recruitmentDetails": "災害時の備えを地域全体で。非常食、懐中電灯、毛布などの防災用品を集めて備蓄しています。",
+    "deadline": "2025-12-07",
+    "organizationId": 4,
+    "createdAt": "2025-11-04T00:00:00Z",
+    "updatedAt": "2025-11-04T00:00:00Z",
+    "organization": {
+      "id": 4,
+      "donationOrganizationName": "防災ネットワーク",
+      "iconImage": "/almond-nui.jpg",
+      "activityDescription": "災害時の備えを地域全体で。非常食、懐中電灯、毛布などの防災用品を集めて備蓄しています。",
+      "organizationImages": ["/yuse-honmono.jpg"]
+    },
+    "requestCategories": [
+      {
+        "id": 5,
+        "name": "防災用品",
+        "pivot": {
+          "donationRequestId": 4,
+          "categoryId": 5
+        }
+      }
+    ]
   },
   {
     "id": 5,
-    "name": "リユースファッション",
-    "representativeName": "山田 愛",
-    "email": "info@reuse-fashion.com",
-    "address": "福岡県福岡市博多区博多駅前8-9-10",
-    "category": "衣類",
-    "explanation": "まだ着られる衣類を必要な方へ。季節の洋服、子供服、靴などを回収し、福祉施設や困窮家庭に提供します。",
-    "iconSrc": "/almond-nui.jpg",
-    "imageSrc": "/yuse-honmono.jpg",
-    "necessity": 2,
-    "deadline": "2025-11-25"
+    "degreeOfNecessity": 2,
+    "recruitmentDetails": "まだ着られる衣類を必要な方へ。季節の洋服、子供服、靴などを回収し、福祉施設や困窮家庭に提供します。",
+    "deadline": "2025-11-25",
+    "organizationId": 5,
+    "createdAt": "2025-11-05T00:00:00Z",
+    "updatedAt": "2025-11-05T00:00:00Z",
+    "organization": {
+      "id": 5,
+      "donationOrganizationName": "リユースファッション",
+      "iconImage": "/almond-nui.jpg",
+      "activityDescription": "まだ着られる衣類を必要な方へ。季節の洋服、子供服、靴などを回収し、福祉施設や困窮家庭に提供します。",
+      "organizationImages": ["/yuse-honmono.jpg"]
+    },
+    "requestCategories": [
+      {
+        "id": 1,
+        "name": "衣類",
+        "pivot": {
+          "donationRequestId": 5,
+          "categoryId": 1
+        }
+      }
+    ]
   }
 ]

@@ -48,8 +48,10 @@ export default function DonationDetail() {
             className="absolute left-8 -bottom-3 rounded-lg shadow-[0_2px_2px_0_rgba(0,0,0,0.25)] z-10"
           />
         </div>
-        <div className="flex flex-col gap-3 w-82 mx-auto">
-          <h1 className="Heading24 text-black">{donation.organization.donationOrganizationName}</h1>
+        <div className="relative flex flex-col gap-3 w-82 mx-auto">
+          <h1 className="Heading24 text-black">
+            {donation.organization.donationOrganizationName}
+          </h1>
           <ul className="flex">
             {[...Array(5)].map((_, i) => {
               const isActive = i+1 <= donation.degreeOfNecessity;
@@ -67,13 +69,15 @@ export default function DonationDetail() {
           </ul>
           <div className="flex items-center justify-center w-min py-1 px-8 Body12Medium text-white bg-beige-orange-500 whitespace-nowrap rounded-full">
             {donation.requestCategories.map((category) => (
-              <div>{category.name}</div>
+              <div key={category.id}>
+                {category.name}
+              </div>
             ))}
           </div>
           <p className="mt-6 text-black Body14Regular">
-            {donation.deadline}
+            {donation.recruitmentDetails}
           </p>
-          <p className="mt-2 text-black Body12Regular">
+          <p className="mt-6 text-gray-800 Body12Regular">
             {donation.deadline}まで
           </p>
         </div>
@@ -83,6 +87,7 @@ export default function DonationDetail() {
           iconSrc="/icons/right-arrow/white.svg"
           iconAlt="right-arrow-icon"
           iconPosition="right"
+          className="fixed bottom-16"
           onClick={() => handleDonate()}
         />
       </section>
