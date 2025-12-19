@@ -13,7 +13,7 @@ export default function Search() {
   const [isSearched, setIsSearched] = useState(false);
   const [categoryes, setCategoryes] = useState<Category[]>([]);
   const [category, setCategory] = useState("");
-  const [necessity, setNecessity] = useState(0);
+  const [necessity, setNecessity] = useState<number[]>([]);
   const [donations, setDonations] = useState<Donation[]>([]);
 
   const getActiveIndex = () => {
@@ -38,7 +38,7 @@ export default function Search() {
     try {
       const response = await Donations({ 
         categoryIds: [Number(category)],
-        necessity: necessity
+        necessity: necessity.length > 0 ? Math.max(...necessity) : 0
       })
 
       console.log(response);
@@ -119,7 +119,7 @@ export default function Search() {
       ) : (
         <form 
           className="flex flex-col gap-8 w-87 mx-auto bg-gray-100 rounded-lg mt-20 p-4"
-          onSubmit={(event) => event.preventDefault()}
+          onSubmit={(e) => e.preventDefault()}
         >
           <section className="flex flex-col gap-5 p-2">
             <div className="flex gap-2 px-2 pb-2 border-b-2 border-beige-orange-600">
@@ -167,6 +167,8 @@ export default function Search() {
             </div>
             <div className="flex flex-wrap gap-y-5 px-2">
               {[...Array(5)].map((_, i) => i).reverse().map((i) => {
+                const isChecked = necessity.includes(i + 1);
+
                 return (
                   <div
                     key={i}
@@ -175,11 +177,18 @@ export default function Search() {
                     <input 
                       type="checkbox"
                       id={String(i)}
-                      onChange={() => setNecessity(i+1)}
-                      className="
+                      checked={isChecked}
+                      onChange={() => {
+                        if (isChecked) {
+                          setNecessity(necessity.filter(n => n !== i + 1));
+                        } else {
+                          setNecessity([...necessity, i + 1]);
+                        }
+                      }}
+                      className={`
                         appearance-none w-7 h-7 bg-white bg-[url(/icons/check/gray-400.svg)] bg-center border border-gray-400 box-border rounded-md shadow-[0_2px_2px_-1px_#959595]
-                        checked:bg-[url(/icons/check/rose-pink-500.svg)] checked:border-2 checked:border-rose-pink-900
-                      "
+                        ${isChecked && "bg-[url(/icons/check/rose-pink-500.svg)] border-2 border-rose-pink-900"}
+                      `}
                     />
                     <label
                       htmlFor={String(i)}
@@ -188,7 +197,7 @@ export default function Search() {
                       {[...Array(i+1)].map((_, i) => (
                         <Image
                           key={i}
-                          src="/icons/box/black.svg"
+                          src={`/icons/box/${isChecked ? "rose-pink-900" : "black"}.svg`}
                           alt="box-icon"
                           width={16}
                           height={16}
