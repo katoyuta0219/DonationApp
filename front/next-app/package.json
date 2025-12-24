@@ -20,7 +20,7 @@
     "axios": "^1.13.2",
     "humps": "^2.0.1",
     "js-cookie": "^3.0.5",
-    "qrcode.react": "^4.2.0",
+    "react-barcode": "^1.6.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
