@@ -7,6 +7,7 @@ interface ButtonProps {
   iconAlt?: string | undefined;
   iconPosition?: "left" | "right";
   className?: string;
+  isDisabled?: boolean;
   onClick?: () => void;
 }
 
@@ -17,6 +18,7 @@ export function Button({
   iconAlt,
   iconPosition,
   className,
+  isDisabled,
   onClick,
 }: ButtonProps) {
   // small:   w-48 (192px) 
@@ -30,10 +32,13 @@ export function Button({
   return (
     <button
       className={`
-        ${className} ${width}
-        flex justify-center items-center gap-2 h-14 bg-beige-orange-500 text-white Body14Bold rounded-lg shadow-beige-orange-400 cursor-pointer
+        ${width}
+        ${className}
+        ${isDisabled ? "bg-gray-200 text-gray-500" : "bg-beige-orange-500 text-white shadow-beige-orange-400 cursor-pointer"}
+        flex justify-center items-center gap-2 h-14 Body14Bold rounded-lg
       `}
       onClick={() => onClick?.()}
+      disabled={isDisabled}
     >
       {iconPosition === "left" && (
         <Image 
