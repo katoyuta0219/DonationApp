@@ -156,6 +156,15 @@
     line-height: 20px;
     letter-spacing: 0;
   }
+
+  .dashed-box {
+    border-top: 0.5px solid transparent;
+    border-image: repeating-linear-gradient(
+      to right,
+      var(--color-gray-600) 0 6px,
+      transparent 6px 10px
+    ) 1;
+  }
 }
 
 body {
