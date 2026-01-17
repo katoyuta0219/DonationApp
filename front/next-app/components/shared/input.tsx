@@ -6,6 +6,7 @@ interface InputProps {
   placeholder: string;
   iconSrc: string;
   iconAlt: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export function Input({ 
@@ -13,7 +14,8 @@ export function Input({
   type, 
   iconSrc, 
   iconAlt,
-  placeholder 
+  placeholder,
+  onChange
 }: InputProps) {
   const height = size === "normal" ? "h-14" : "h-11"; // 56px : 44px
   
@@ -33,6 +35,7 @@ export function Input({
       <input
         type={type}
         placeholder={placeholder}
+        onChange={(e) => onChange?.(e)}
         className="w-full h-full outline-none"
       />
     </div>

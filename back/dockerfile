@@ -5,9 +5,9 @@ ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV COMPOSER_HOME="/opt/composer"
 ENV PATH="$PATH:/opt/composer/vendor/bin"
 RUN apt-get update
-RUN apt-get install -y zip
+RUN apt-get install -y zip libpq-dev
 
-RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql pdo_pgsql
 
 COPY . .
 WORKDIR /workdir/laravel_app

@@ -1,13 +1,43 @@
 export interface Donation {
   id: number;
-  name: string;
-  representativeName: string;
-  email: string;
-  address: string;
-  category: "衣類" | "家具・家電" | "書籍・学用品" | "食品・日用品" | "防災用品" | "ペット用品" | "おもちゃ・ベビー用品";
-  explanation: string;
-  iconSrc: string;
-  imageSrc: string;
-  necessity: 1 | 2 | 3 | 4 | 5;
+  degreeOfNecessity: number;
+  recruitmentDetails: string;
+  deadline: string;
+  organizationId: number;
   createdAt: string;
+  updatedAt: string;
+  organization: Organization;
+  requestCategories: RequestCategory[];
+}
+
+export interface DonationHistory {
+  id: number;
+  name: string;
+  recruitmentDetails: string;
+  explanation: string;
+  deadline: string;
+  category: "衣類" | "家具・家電" | "書籍・学用品" | "食品・日用品" | "防災用品" | "ペット用品" | "おもちゃ・ベビー用品";
+  createdAt: string;
+}
+
+export interface Category {
+  id: number;
+  name: string;
+}
+
+export interface Organization {
+  id: number;
+  donationOrganizationName: string;
+  iconImage: string;
+  activityDescription: string;
+  organizationImages: string[];
+}
+
+export interface RequestCategory {
+  id: number;
+  name: string;
+  pivot?: {
+    donationRequestId: number;
+    categoryId: number;
+  };
 }

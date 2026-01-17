@@ -1,8 +1,37 @@
+"use client";
+
 import Image from "next/image"
 import Link from "next/link"
+import Cookies from "js-cookie";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Input, Button } from "@/components/shared"
+import { Signup } from "@/api";
 
 export default function Login() {
+  const router = useRouter();
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const formValues = {
+    name: name,
+    password: password,
+  };
+
+  const handleSubmit = async () => {
+    console.log("submit");
+    try {
+      const response = await Signup({ ...formValues });
+
+      if (response.success) {
+        console.log("アカウント作成に成功しました");
+        Cookies.set("authToken", response.token);
+        router.push("/");
+      }
+    } catch (error) {
+      console.error("アカウント作成に失敗しました", error);
+    }
+  }
+  
   return (
     <main className="flex flex-col items-center mt-26 px-8">
       <h1 className="w-full text-start Heading24">
@@ -15,7 +44,10 @@ export default function Login() {
         width={240}
         height={160}
       />
-      <form className="flex flex-col items-center gap-16">
+      <form 
+        className="flex flex-col items-center gap-16"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <div className="flex flex-col gap-6">
           <Input 
             size="normal"
@@ -23,18 +55,21 @@ export default function Login() {
             placeholder="ユーザー名を入力"
             iconSrc="/icons/user/gray-500.svg"
             iconAlt="user-icon"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
           />
           <Input 
             size="normal"
             type="password"
             placeholder="パスワードを入力"
-            iconSrc="/icons/password-icon.svg"
+            iconSrc="/icons/password/gray-500.svg"
             iconAlt="password-icon"
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
           />
         </div>
         <Button 
           size="large"
           text="新規登録"
+          onClick={() => handleSubmit()}
         />
       </form>
       <div className="mt-21 text-center text-gray-600 Body12Regular">
@@ -53,7 +88,7 @@ export default function Login() {
           既にアカウントをお持ちですか？
         </p>
         <Link 
-          href="/public/login"
+          href="/login"
           className="text-rose-pink-800 Body12Medium"
         >
           ログイン
