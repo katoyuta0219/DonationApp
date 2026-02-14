@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { NavigationBar, Button } from "@/components/shared";
 import { DonationCard } from "@/components/features/donation/donation-card";
 import { Donation, Category } from "@/types/donation/types";
-import { GetCategoryes, Donations } from "@/api";
 
 export default function Search() {
   const pathname = usePathname();
@@ -30,36 +29,8 @@ export default function Search() {
   };
 
   const handleSearch = () => {
-    fetchDonations();
     setIsSearched(true);
   };
-
-  const fetchDonations = async () => {
-    try {
-      const response = await Donations({ 
-        categoryIds: [Number(category)],
-        necessity: necessity.length > 0 ? Math.max(...necessity) : 0
-      })
-
-      console.log(response);
-      setDonations(response);
-    } catch (error) {
-      console.error("寄付団体一覧の取得に失敗しました: ", error);
-    }
-  }
-
-  useEffect(() => {
-    const fetchCategoryes = async () => {
-      try {
-        const response = await GetCategoryes();
-
-        setCategoryes(response);
-      } catch (error) {
-        console.error("カテゴリの取得に失敗しました: ", error);
-      };
-    };
-    fetchCategoryes();
-  });
 
   return (
     <main className="mb-28">

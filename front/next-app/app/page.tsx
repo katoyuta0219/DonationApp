@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation";
 import { NavigationBar } from "@/components/shared"
 import { DonationCard } from "@/components/features/donation/donation-card"
 import { Donation } from "@/types/donation/types"
-import { Donations } from "@/api";
 
 export default function Home() {
   const pathname = usePathname();
@@ -24,23 +23,6 @@ export default function Home() {
         return 0;
     }
   };
-
-  useEffect(() => {
-    const fetchDonations = async () => {
-      try {
-        const response = await Donations({
-          categoryIds: [],
-          necessity: undefined
-        });
-
-        setDonations(response);
-        console.log("取得に成功しました: ", response);
-      } catch (error) {
-        console.error("取得に失敗しました: ", error);
-      }
-    }
-    fetchDonations();
-  }, []);
 
   return (
     <main className="mb-22">

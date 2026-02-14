@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { Input, Button } from "@/components/shared";
-import { Login as LoginAPI } from "@/api";
 
 export default function Login() {
   const router = useRouter();
@@ -15,20 +14,6 @@ export default function Login() {
   const formValues = {
     name: name,
     password: password,
-  };
-
-  const handleSubmit = async () => {
-    try {
-      const response = await LoginAPI({ ...formValues });
-
-      if (response.success) {
-        console.log("ログインに成功しました");
-        Cookies.set("authToken", response.token);
-        router.push("/");
-      }
-    } catch (error) {
-      console.error("ログインに失敗しました: ", error);
-    };
   };
 
   return (
@@ -68,7 +53,6 @@ export default function Login() {
         <Button 
           size="large"
           text="ログイン"
-          onClick={() => handleSubmit()}
         />
       </form>
       <div className="mt-21 text-center text-gray-600 Body12Regular">

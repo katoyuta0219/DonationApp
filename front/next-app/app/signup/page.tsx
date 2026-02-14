@@ -6,7 +6,6 @@ import Cookies from "js-cookie";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Input, Button } from "@/components/shared"
-import { Signup } from "@/api";
 
 export default function Login() {
   const router = useRouter();
@@ -17,20 +16,6 @@ export default function Login() {
     password: password,
   };
 
-  const handleSubmit = async () => {
-    console.log("submit");
-    try {
-      const response = await Signup({ ...formValues });
-
-      if (response.success) {
-        console.log("アカウント作成に成功しました");
-        Cookies.set("authToken", response.token);
-        router.push("/");
-      }
-    } catch (error) {
-      console.error("アカウント作成に失敗しました", error);
-    }
-  }
   
   return (
     <main className="flex flex-col items-center mt-26 px-8">
@@ -69,7 +54,6 @@ export default function Login() {
         <Button 
           size="large"
           text="新規登録"
-          onClick={() => handleSubmit()}
         />
       </form>
       <div className="mt-21 text-center text-gray-600 Body12Regular">
